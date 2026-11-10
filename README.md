@@ -84,70 +84,13 @@ Confira a instalação:
 
 O Universal Builder não instala SDKs, NDKs, JDKs ou Gradle automaticamente. As ferramentas necessárias precisam ser baixadas, extraídas e organizadas manualmente dentro de `tools/`.
 
-## 4. Estrutura de diretórios
-
-```text
-Universal-Builder/
-│
-├── builder.sh
-│
-├── builders/
-│   ├── android-gradle.sh
-│   └── android-legacy.sh
-│
-├── core/
-│   ├── analyze-project.py
-│   ├── detect-versions.sh
-│   └── discover-tools.sh
-│
-├── ferramentas/
-│
-├── installers/
-│
-├── profiles/
-│   ├── android-native/
-│   ├── cpp/
-│   ├── java/
-│   ├── python/
-│   └── linux/
-│
-├── projects/
-│
-├── output/
-│
-├── tools/
-│   ├── android/
-│   ├── android-sdk/
-│   ├── java/
-│   ├── gradle/
-│   ├── gradle-user-home/
-│   ├── runtime/
-│   └── keys/
-│
-├── README.md
-└── .gitignore
-```
-
-### Função dos diretórios
-
-| Diretório | Finalidade |
-|---|---|
-| `builders/` | Adaptadores especializados de compilação |
-| `core/` | Análise, detecção e descoberta de ferramentas |
-| `ferramentas/` | Área para organizar pacotes baixados manualmente |
-| `installers/` | Reservado para instaladores; atualmente vazio |
-| `profiles/` | Configurações e verificadores dos perfis |
-| `projects/` | Projetos clonados ou armazenados pelo Builder |
-| `output/` | Arquivos finais de compilação |
-| `tools/` | Ferramentas utilizadas internamente |
-
-## 5. Instalação manual das ferramentas Android
+## 4. Instalação manual das ferramentas Android
 
 O Universal Builder procura as ferramentas dentro de `tools/`.
 
 Não basta instalar SDK, NDK ou Java no sistema: a descoberta automática rejeita diretórios externos à pasta interna de ferramentas.
 
-### 5.1 Android SDK
+### 5 Android SDK
 
 Página oficial:
 
@@ -191,7 +134,7 @@ tools/android-sdk/cmdline-tools/latest/bin/sdkmanager \
 
 A versão 28.0.3 das Build Tools é necessária atualmente para o adaptador Android Gradle realizar o alinhamento e a assinatura dos APKs.
 
-### 5.2 Android NDK
+### 5.1 Android NDK
 
 Página oficial:
 
@@ -222,7 +165,7 @@ O executável `ndk-build` precisa ter permissão de execução.
 
 O NDK é necessário para projetos que utilizam código nativo. Entretanto, o adaptador Android legado atualmente exige que o NDK seja localizado mesmo quando não encontra `Android.mk`.
 
-### 5.3 Java JDK
+### 5.2 Java JDK
 
 O JDK deve ser extraído dentro de `tools/java/`.
 
@@ -267,7 +210,7 @@ A descoberta automática utiliza as seguintes regras:
 
 Essas regras são as implementadas atualmente, não uma matriz universal de compatibilidade Android.
 
-### 5.4 Gradle
+### 5.3 Gradle
 
 Página oficial:
 
@@ -704,6 +647,5 @@ Antes de compilar projetos de terceiros:
 - Confira o conteúdo de `BUILD_COMMAND`.
 - Verifique os scripts de compilação do projeto.
 - Não execute projetos desconhecidos sem analisar seu conteúdo.
-- Proteja os arquivos de assinatura e suas senhas.
 
 O Builder não executa os projetos em ambiente isolado.
