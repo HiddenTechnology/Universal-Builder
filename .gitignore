@@ -1,5 +1,0 @@
-builder.local.conf
-*.log
-*.tmp
-*.bak
-.DS_Store
