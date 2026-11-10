@@ -1,0 +1,2 @@
+BUILDER_PROFILE="python"
+BUILD_COMMAND="python3 -m build"

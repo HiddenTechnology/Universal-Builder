@@ -1,0 +1,2 @@
+# id|version|url|type|destino|sha256|variavel
+# Dependências serão identificadas individualmente pelo analisador.

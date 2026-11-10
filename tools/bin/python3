@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
+ROOT="$(cd -- "$SCRIPT_DIR/../.." && pwd -P)"
+PYTHON_HOME="$ROOT/tools/python/usr"
+
+export PYTHONHOME="$PYTHON_HOME"
+export PYTHONPATH="$PYTHON_HOME/lib/python3.13/site-packages${PYTHONPATH:+:$PYTHONPATH}"
+
+exec "$PYTHON_HOME/bin/python3.13" "$@"

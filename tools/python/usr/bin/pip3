@@ -1,0 +1,6 @@
+#!/home/brayan/Downloads/Universal-Builder/tools/python/usr/bin/python3.13
+import sys
+from pip._internal.cli.main import cli
+if __name__ == '__main__':
+    sys.argv[0] = sys.argv[0].removesuffix('.exe')
+    sys.exit(cli())

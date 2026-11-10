@@ -1,0 +1,11 @@
+# Perfil Android: versões descobertas automaticamente.
+BUILDER_PROFILE="android-native"
+
+# Sobrescritas opcionais para projetos com requisitos específicos:
+# ANDROID_SDK_ROOT=""
+# ANDROID_NDK_HOME=""
+# ANDROID_PLATFORM=""
+# ANDROID_BUILD_TOOLS_VERSION=""
+# JAVA_HOME=""
+
+BUILD_COMMAND=""

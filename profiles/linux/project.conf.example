@@ -1,0 +1,2 @@
+BUILDER_PROFILE="linux"
+BUILD_COMMAND="make"

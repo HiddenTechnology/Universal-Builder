@@ -1,0 +1,10 @@
+# Perfil Android baseado em Gradle.
+BUILDER_PROFILE="android-gradle"
+
+# Sobrescritas opcionais:
+# ANDROID_SDK_ROOT=""
+# ANDROID_PLATFORM=""
+# ANDROID_BUILD_TOOLS_VERSION=""
+# JAVA_HOME=""
+
+BUILD_COMMAND=""
