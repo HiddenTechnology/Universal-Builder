@@ -214,6 +214,36 @@ ub_discover_android() {
     fi
 
     # ---------------------------------------------------------
+    # ---------------------------------------------------------
+    # 4.1. Exportar caminhos das ferramentas Build Tools.
+    # ---------------------------------------------------------
+
+    if [[ -n "${sdk:-}" && -n "${ANDROID_BUILD_TOOLS_VERSION:-}" ]]; then
+        local bt_dir="$sdk/build-tools/$ANDROID_BUILD_TOOLS_VERSION"
+
+        if [[ -d "$bt_dir" ]]; then
+            [[ -x "$bt_dir/dx" ]] &&
+                ANDROID_DX="$bt_dir/dx"
+
+            [[ -x "$bt_dir/aapt" ]] &&
+                ANDROID_AAPT="$bt_dir/aapt"
+
+            [[ -x "$bt_dir/zipalign" ]] &&
+                ANDROID_ZIPALIGN="$bt_dir/zipalign"
+
+            [[ -x "$bt_dir/apksigner" ]] &&
+                ANDROID_APKSIGNER="$bt_dir/apksigner"
+
+            [[ -x "$bt_dir/d8" ]] &&
+                ANDROID_D8="$bt_dir/d8"
+
+            export ANDROID_DX ANDROID_AAPT
+            export ANDROID_ZIPALIGN ANDROID_APKSIGNER
+            [[ -z "${ANDROID_D8:-}" ]] || export ANDROID_D8
+        fi
+    fi
+
+    # ---------------------------------------------------------
     # 5. Localizar Java interno.
     # ---------------------------------------------------------
 
