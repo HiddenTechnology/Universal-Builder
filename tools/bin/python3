@@ -1,9 +1,21 @@
 #!/usr/bin/env bash
+set -euo pipefail
+
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
 ROOT="$(cd -- "$SCRIPT_DIR/../.." && pwd -P)"
 PYTHON_HOME="$ROOT/tools/python/usr"
 
-export PYTHONHOME="$PYTHON_HOME"
-export PYTHONPATH="$PYTHON_HOME/lib/python3.13/site-packages${PYTHONPATH:+:$PYTHONPATH}"
+# 1) Usa o Python nativo do sistema, se existir.
+if command -v python3 >/dev/null 2>&1; then
+    exec "$(command -v python3)" "$@"
+fi
 
-exec "$PYTHON_HOME/bin/python3.13" "$@"
+# 2) Se não houver Python nativo, usa o Python embutido do repositório.
+if [ -x "$PYTHON_HOME/bin/python3.13" ]; then
+    export PYTHONHOME="$PYTHON_HOME"
+    export PYTHONPATH="$PYTHON_HOME/lib/python3.13/site-packages${PYTHONPATH:+:$PYTHONPATH}"
+    exec "$PYTHON_HOME/bin/python3.13" "$@"
+fi
+
+echo "[ERRO] Nenhum Python nativo ou embutido foi encontrado." >&2
+exit 127
